@@ -4,6 +4,11 @@
 const numberOne = "1.10";
 const numberTwo = "2.30";
 
+const firstNumber = parseFloat(numberOne);
+const secondNumber = parseFloat(numberTwo);
+
+console.log(firstNumber + " " + secondNumber);
+
 // add those two numbers and show the result
 // you cannot touch line 1 neither line 2
 
@@ -17,10 +22,15 @@ const numberTwo = "2.30";
 const anotherNumberOne = "1.10";
 const anotherNumberTwo = "2.30";
 
-const firstNumber = parseFloat(anotherNumberOne);
-const secondNumber = parseFloat(anotherNumberTwo);
+const primoNumber = parseFloat(anotherNumberOne);
+const ultimoNumber = parseFloat(anotherNumberTwo);
 
-console.log(firstNumber+" "+secondNumber);
+const sumOfNumbers = primoNumber + ultimoNumber + 0.00;
+const sumOfNumbersWith2dec = sumOfNumbers.toFixed(2);
+
+console.log(firstNumber + " + " + secondNumber + " = " + sumOfNumbersWith2dec );
+
+
 
 
 // --------------------------------------

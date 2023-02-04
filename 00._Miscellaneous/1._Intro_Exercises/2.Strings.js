@@ -70,7 +70,7 @@ console.log(fact);
 
 // capitalize the J in Javascript
 
-
+// added comment for push in terminal
 // --------------------------------------
 
 

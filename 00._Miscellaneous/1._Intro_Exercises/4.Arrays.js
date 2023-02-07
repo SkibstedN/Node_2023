@@ -42,7 +42,7 @@ console.log("The number 1729 is in the array at index: " + index);
 const diet = ["tomato", "cucumber", "rocket"];
 const insertions = ["hamburger", "soda", "pizza"];
 const addToIndex = 2;
-diet.splice(addToIndex, 0, ...insertions);
+diet.splice(addToIndex, 0, ...insertions); //the three dots splits up the array we want to insert, into individual elements
 console.log(diet);
 
 // You are a programmer. In one line (one statement) insert hamburger, soda and pizza between the elements cucumber and rocket

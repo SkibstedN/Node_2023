@@ -1,0 +1,10 @@
+This structure follows the REST conventions for web APIs.
+
+HTTP-Method	  Endpoint	       Description
+
+GET	          /birds	       Retrieve a list of all birds.
+GET	          /birds/<id>	   Retrieve a specific bird by id.
+POST	      /birds	       Add a new bird.(not implemented yet.)
+PUT	          /birds/<id>	   Update a specific bird by id. (not implemented yet.) 
+PATCH	      /birds/<id>	   Update a specific bird by id. (not implemented yet.)
+DELETE	      /birds/<id>	   Delete a specific bird by id. (not implemented yet.)

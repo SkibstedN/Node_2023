@@ -25,7 +25,7 @@ app.get("/about", (req, res) => {
     res.send(`
         <h1>About</h1>
         <h3>This is my about page now READ IT!.</h3>
-    `)
+    `);
 })
 
 // /bat?adjective=spooky = a query string

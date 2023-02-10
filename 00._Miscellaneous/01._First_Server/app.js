@@ -25,6 +25,18 @@ app.get("/about", (req, res) => {
     `)
 })
 
+// /bat?adjective=spooky = a query string
+app.get("/bat", (req, res) => {
+    console.log(req.query);
+    res.send({message: `The bat is ${req.query.adjective}` });
+});
+
+// /bottle/large
+app.get("/bottle/:bottleSize", (req, res) => {
+    console.log(req.params);
+    res.send({bottleSize: req.params.bottleSize });
+})
+
 
 app.listen(8080);
 

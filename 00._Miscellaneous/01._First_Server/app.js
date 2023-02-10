@@ -1,8 +1,11 @@
-const app = require("express")();
+//const app = require("express")();
 
 
-/* const express = require("express");
-const app = express();  */
+const express = require("express");
+const app = express();  
+
+app.use(express.json());
+
 
 // rout (entire ting)
 // HTTP method
@@ -36,6 +39,11 @@ app.get("/bottle/:bottleSize", (req, res) => {
     console.log(req.params);
     res.send({bottleSize: req.params.bottleSize });
 })
+
+app.post("/package", (req, res ) =>  {
+    console.log(req.body);
+    res.send({ message: req.body });
+});
 
 
 app.listen(8080);

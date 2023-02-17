@@ -8,11 +8,15 @@ const app = express();
 const birds = [{name: "Crow", id: "1"}, {name: "Raven", id: "2"}
 ,{ name: "Woodpecker", id: "3"}, {name: "Blackbird", id: "4"}];
 
+
+
 //This method listens for HTTP GET requests to the "/birds" URL and returns a response when a request is recieved.
 // In this case all objects in the birds array.
 app.get("/birds", (req, res) => {
     res.send(birds);
 });
+
+
 
 //Listening for HTTP GET requsts to the "/birds/:id" URL, where
 //"id" is a placeholder for a specific bird's id.
@@ -28,4 +32,7 @@ app.get( "/birds/:id", (req, res) => {
 });
 
 
-app.listen(8080);
+//app.listen(8080);
+
+app.listen(8080, () => {console.log("Se4rver running on port", 8080);
+})

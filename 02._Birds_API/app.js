@@ -1,12 +1,28 @@
 //The require function allows us to include and use modules in our code,
 //in this case the "express" module
-const express = require("express");
-const app = express();  
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 //Defines a constant variable birds that is assigned an array of bird objects.
 //This is done to have some in memory data for the HTTP responses.
-const birds = [{name: "Crow", id: "1"}, {name: "Raven", id: "2"}
-,{ name: "Woodpecker", id: "3"}, {name: "Blackbird", id: "4"}];
+const birds = [{name: "Crow", id: 1}, {name: "Raven", id: 2}
+,{ name: "Woodpecker", id: 3}, {name: "Blackbird", id: 4}];
+
+
+
+app.post("/birds", (req, res) => {
+    const { name } = req.body;
+    const id = birds.length + 1;
+    const newBird = { id, name };
+    birds.push(newBird);
+    res.send(newBird);
+  });
+
 
 
 
@@ -22,7 +38,7 @@ app.get("/birds", (req, res) => {
 //"id" is a placeholder for a specific bird's id.
 app.get( "/birds/:id", (req, res) => {
     //Preparing the response and error message.
-    const bird = birds.find(bird => bird.id === req.params.id);
+    const bird = birds.find(bird => bird.id === parseInt(req.params.id));
     console.log(req.params);
     if (!bird) {
         res.status(404).send("Bird not found.");

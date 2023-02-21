@@ -1,13 +1,15 @@
 const express = require('express');
+//Importing the bodyParser middleware
 const bodyParser = require('body-parser');
-const fs = require('fs'); //Here, we are using the fs module to read from and write to the birds.json file.
+//Importing the fs module - it is providing the functionality we need to read and write from files
+const fs = require('fs'); //.
 
-const app = express();
+const app = express();  //Creating a new instance of the Express application, which will be used to handle HTTP requests.
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+//app.use(bodyParser.urlencoded({extended: true}));
 
-let birds = [];
+let birds = []; //Using 'let' since the value of birds is being reassigned later in the application.
 
 // read data from the birds.json file into the birds array
 fs.readFile('birds.json', (err, data) => {
@@ -15,12 +17,12 @@ fs.readFile('birds.json', (err, data) => {
         console.error(err);
         return;
     }
-    birds = JSON.parse(data);
+    birds = JSON.parse(data);  //Takes a string of JSON data and returns a JavaScript object.
 });
 
 //Create a new bird and write it to the file
 app.post("/birds", (req, res) => {
-    const { commonName, scientificName } = req.body;
+    const { commonName, scientificName } = req.body;  //Destructuring assignment to extract the commonName and scientificName properties from the request body.
 
     /*checks if the array is empty - if its empty the id is set to 1 - 
     else: Set the id of the new object to the id of the last object in the array + 1*/
@@ -57,7 +59,7 @@ app.post("/birds", (req, res) => {
   });
 
 
-
+  //This method updates a single or all properties in an object in the birds array.
   app.put("/birds/:id", (req, res) => {
 
     //extracing the id parameter from the request URL using req.params.id. Since route parameters are always strings, parseInt() is used to convert the ID to a number.
@@ -71,7 +73,7 @@ app.post("/birds", (req, res) => {
         return;
     }
 
-    const { commonName, scientificName } = req.body; //Using destructuring assignment to extract the commonName and scientificName properties from the request body.
+    const { commonName, scientificName } = req.body; //Destructuring assignment to extract the commonName and scientificName properties from the request body.
     const bird = { id, commonName, scientificName };
     birds[birdIndex] = bird; //Replacing the original object with the updated object.
 
@@ -85,6 +87,31 @@ app.post("/birds", (req, res) => {
 
     res.send(bird);
 });
+
+
+app.delete("/birds/:id", (req, res) => {
+  const birdId = parseInt(req.params.id);
+
+  //Creating a new array containing all elelments from the birds array tha have another id than the id passed in the request.
+  const newBirds = birds.filter((bird) => bird.id !== birdId); 
+  //Comparing langht of the arrays - if its the same then no bird was removed/the requested id was not found.
+  if (newBirds.length === birds.length) {
+    res.status(404).send("Bird not found.");
+  } else {
+    birds = newBirds; //The content of the original array is now replaced with the content of the filtered arrray.
+
+    fs.writeFile("birds.json", JSON.stringify(birds), (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Error deleting bird.");
+      } else {
+        res.send("Bird deleted successfully.");
+      }
+    });
+  }
+});
+
+
 
   
   app.listen(8080, () => {

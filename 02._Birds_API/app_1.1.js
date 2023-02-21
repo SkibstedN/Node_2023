@@ -58,14 +58,13 @@ app.post("/birds", (req, res) => {
     }
   });
 
-
-  //This method updates a single or all properties in an object in the birds array.
+  /*
+  
   app.put("/birds/:id", (req, res) => {
 
-    //extracing the id parameter from the request URL using req.params.id. Since route parameters are always strings, parseInt() is used to convert the ID to a number.
     const id = parseInt(req.params.id); 
 
-    //Search for the index of the bird with the specified ID - findIndex() returns -1 if no match is found.
+    
     const birdIndex = birds.findIndex(bird => bird.id === id);
 
     if (birdIndex === -1) {
@@ -75,8 +74,7 @@ app.post("/birds", (req, res) => {
 
     const { commonName, scientificName } = req.body; //Destructuring assignment to extract the commonName and scientificName properties from the request body.
     const bird = { id, commonName, scientificName };
-    birds[birdIndex] = bird; //Replacing the original object with the updated object.
-
+    birds[birdIndex] = bird; 
     fs.writeFile('birds.json', JSON.stringify(birds), err => {
         if (err) {
             console.error(err);
@@ -86,7 +84,41 @@ app.post("/birds", (req, res) => {
     });
 
     res.send(bird);
+});          */
+
+
+//This method updates an object in the birds array.
+app.patch("/birds/:id", (req, res) => {
+
+  //extracing the id parameter from the request URL using req.params.id. Since route parameters are always strings, parseInt() is used to convert the ID to a number.
+  const id = parseInt(req.params.id);
+  //Search for the index of the bird with the specified ID - findIndex() returns -1 if no match is found.
+  const birdIndex = birds.findIndex(bird => bird.id === id);
+
+  if (birdIndex === -1) {
+      res.status(404).send("Bird not found.");
+      return;
+  }
+
+  // Get the existing bird object and merge it with the new values in the request body
+  const existingBird = birds[birdIndex];
+  //By using the spread syntax, any properties in req.body that have the same name as properties in existingBird will overwrite the corresponding properties in existingBird. 
+  const updatedBird = { ...existingBird, ...req.body };
+
+  birds[birdIndex] = updatedBird;  //Replacing the original object with the updated object.
+
+
+  fs.writeFile('birds.json', JSON.stringify(birds), err => {
+      if (err) {
+          console.error(err);
+          return;
+      }
+      console.log('Data written to file');
+  });
+
+  res.send(updatedBird);
 });
+
 
 
 app.delete("/birds/:id", (req, res) => {

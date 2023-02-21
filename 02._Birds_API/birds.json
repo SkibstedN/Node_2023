@@ -1,1 +1,1 @@
-[{"name":"Crow","id":1},{"name":"Raven","id":2},{"name":"Woodpecker","id":3},{"name":"Blackbird","id":4},{"id":5,"name":"Flamingo"},{"id":6,"name":"Golden Eagle"}]
+[{"id":1,"scientificName":"Grus grus"},{"id":2,"commonName":"Carrion Crow","scientificName":"Corvus corone"},{"id":3,"commonName":"Eurasian tree sparrow","scientificName":"Passer montanus"},{"id":4,"commonName":"Grey heron","scientificName":"Ardea cinerea"},{"id":5,"commonName":"Iberian green woodpecker","scientificName":"Picus sharpei"}]

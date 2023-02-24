@@ -121,10 +121,10 @@ app.patch("/birds/:id", (req, res) => {
 
 
 
-app.delete("/birds/:id", (req, res) => {
+app.delete("/birds/:id", (req, res) => {   //Should use find() and findIndex() instead of filter
   const birdId = parseInt(req.params.id);
 
-  //Creating a new array containing all elelments from the birds array tha have another id than the id passed in the request.
+  //Creating a new array containing all elements from the birds array tha have another id than the id passed in the request.
   const newBirds = birds.filter((bird) => bird.id !== birdId); 
   //Comparing langht of the arrays - if its the same then no bird was removed/the requested id was not found.
   if (newBirds.length === birds.length) {

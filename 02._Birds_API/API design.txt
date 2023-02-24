@@ -8,3 +8,8 @@ POST	      /birds	       Add a new bird.
 PUT	          /birds/<id>	   Update a specific bird by id. (not implemented ) 
 PATCH	      /birds/<id>	   Update a specific bird by id. 
 DELETE	      /birds/<id>	   Delete a specific bird by id. 
+
+GET /birds
+GET /birds/<id>
+POST /birds/<id>
+DELETE /birdds/<id>

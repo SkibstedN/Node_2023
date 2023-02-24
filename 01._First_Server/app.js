@@ -34,6 +34,41 @@ app.get("/bat", (req, res) => {
     res.send({message: `The bat is ${req.query.adjective}` });
 });
 
+console.log(new Date());
+console.log(Date());
+console.log(Date.now());
+
+/* Time */
+app.get("/time", (req, res) =>{
+    res.send({ 
+        time:  new Date(),
+        timeLocal: Date(),
+        unixTimestamp: Date.now()
+    });
+});
+
+const days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday","Friday","Saturday"];
+
+    // assignment: get the current day and month in English res.send({ data: days[new Date().getDay()]});
+app.get("/time/day", (req, res) => {
+    const today = new Date();
+    const options = { weekday: 'long' };
+    const day = new Intl.DateTimeFormat('en-US', options).format(today);
+    res.send({ currentDay: day});
+});
+
+const months = ["Jan", "Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Okt","Now","Dec"];
+
+app.get("/time/month", (req, res) => {
+    const today = new Date();
+    const options = { month: 'long' };
+    const month = new Intl.DateTimeFormat('en-US', options).format(today);
+    res.send({ currentMonth: month});
+});
+
+
+
+
 // /bottle/large
 app.get("/bottle/:bottleSize", (req, res) => {
     console.log(req.params);

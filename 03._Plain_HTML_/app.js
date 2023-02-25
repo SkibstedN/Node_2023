@@ -42,11 +42,18 @@ app.put("/api/visitors", (req, res) =>{
 });
 
 
-const PORT = 8080;
+/*const PORT = 8080;
 app.listen(PORT, (error) =>  {
     if (error){
         console.log(error);
         return;
     }
     console.log("Server is running on ", PORT);
-});
+});*/
+
+const PORT = 5000;
+app.listen(5000, () => {
+    console.log("Running on port 5000.");
+  });
+
+  module.exports = app;

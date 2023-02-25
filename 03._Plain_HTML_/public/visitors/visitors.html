@@ -4,9 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanks | Visitors</title>
+
+    <style>
+        body {
+            background-color: coral;
+        }
+    </style>
+    
 </head>
 <body>
     <div id="visitor-count"></div>
+
+    <script>
+        fetch("/api/visitors")
+.then(response => response.json())
+.then(result => {
+    updateVisitorCount(result.data);
+});
+
+function updateVisitorCount(visitorCount) {
+    const visitorCountDiv = document.getElementById("visitor-count");
+    visitorCountDiv.innerText = visitorCount;
+}
+
+function writeInVisitorLog() {
+    fetch("/api/visitors", {
+        method: "PUT", 
+        headers: {
+            "Content-Type": "application/json"
+        }   
+    })
+    .then(response => response.json())
+    .then(result => updateVisitorCount(result.data));
+}
+    </script>
 
     <button onclick="writeInVisitorLog()">Write a page in the visitor log</button>
 

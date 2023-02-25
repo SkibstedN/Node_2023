@@ -5,9 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/tanks/tanks.css">
     <title>Tanks</title>
+
+    <style>
+    body {
+        background-color: aqua;
+    }</style>
+    
 </head>
 <body>
     <h1>Tanks</h1>
+
+    <script>
+    fetch("/api/tanks")
+        .then(response => response.json())
+        .then(result => {
+            const tanksWrapperDiv = document.getElementById("tanks-wrapper");
+        
+            // avoid XSS!!!
+            result.data.forEach(tank => {
+                const tankDiv = document.createElement("div");
+        
+                const tankNameP = document.createElement("p");
+                tankNameP.innerText = tank.name || "No name";
+                tankDiv.appendChild(tankNameP);
+         
+                const tankNationalityP = document.createElement("p");
+                tankNationalityP.innerText = tank.nationality || "No nationality";
+                tankDiv.appendChild(tankNationalityP);
+        
+                const breakBr = document.createElement("br");
+                tankDiv.appendChild(breakBr);
+                
+                tanksWrapperDiv.appendChild(tankDiv);        
+            });
+        
+        });
+        </script>
 
     <div id="tanks-wrapper"></div>
 

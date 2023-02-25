@@ -1,31 +1,37 @@
 const express = require("express");
 const app = express();
 
-app.use(express.static("public"));   //set "public" folder to be the static folder in express
+app.use(express.static("public"));   //set "public" folder to be the static folder in express(for security resons)
 
 const tanks = [
-    {name: "leopard", nationality: "German"},
-    {name: "Abrams", nationality: "USA"}
+    {name: "leopard", nationality: "Germany"},
+    {name: "Abrams", nationality: "USA"},
+    { name: "Tiger", nationality: "Germany", year: 1943 }
+
 ];
 
 let visitorCount = 0;
 
-console.log(__dirname + "/public/frontpage/frontpage.html")
+/* Pages */
+
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/frontpage/frontpage.html"); 
 });
-//C:\Users\nsk20\Node\Node_2023\03._Plain_HTML_\public\frontpage\frontpage.html
 
 app.get("/tanks", (req, res) => {
     res.sendFile(__dirname + "/public/tanks/tanks.html");
 });
 
-app.get("/visitors", (req, res) => 
+app.get("/visitors", (req, res) => {
     res.sendFile(__dirname + "/public/visitors/visitors.html");
-)
+});
 
-//app.get("/api/tanks", (req, res) =>)
+/* API */
+
+app.get("/api/tanks", (req, res) => {
+    res.send({ data: tanks});
+})
 
 app.get("/api/visitors", (req, res) => {
     res.send ({ data: visitorCount});
@@ -44,9 +50,3 @@ app.listen(PORT, (error) =>  {
     }
     console.log("Server is running on ", PORT);
 });
-
-/* falsy values */
-/* const falsy = null;
-if(!falsy) {
-    console.log("========================== OH NOOO ========================");
-}   */

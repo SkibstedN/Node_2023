@@ -12,7 +12,7 @@ const tanks = [
 
 let visitorCount = 0;
 
-/* Pages */
+/* Pages */ //C:\Users\nsk20\Node\Node_2023\03._Plain_HTML_\visitors\visitors.html
 
 
 app.get("/", (req, res) => {

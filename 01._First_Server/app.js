@@ -51,19 +51,14 @@ const days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday","Friday","Sa
 
     // assignment: get the current day and month in English res.send({ data: days[new Date().getDay()]});
 app.get("/time/day", (req, res) => {
-    const today = new Date();
-    const options = { weekday: 'long' };
-    const day = new Intl.DateTimeFormat('en-US', options).format(today);
-    res.send({ currentDay: day});
+    res.send({ data: days[new Date().getDay()] });
 });
 
 const months = ["Jan", "Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Okt","Now","Dec"];
 
 app.get("/time/month", (req, res) => {
-    const today = new Date();
-    const options = { month: 'long' };
-    const month = new Intl.DateTimeFormat('en-US', options).format(today);
-    res.send({ currentMonth: month});
+    res.send({ data: months[new Date().getMonth()] });
+
 });
 
 

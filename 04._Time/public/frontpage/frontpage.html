@@ -4,9 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time application</title>
+    <title>Clocks and world time</title>
+    <style>
+        body {
+            background-color: black;
+            color: yellow;
+        }
+
+        #clock {
+            color:black;
+          font-size: 3em;
+          text-align: center;
+          padding: 0.5em;
+          background-color: #eb2828;
+          border: 1px solid #ddd;
+          border-radius: 0.5em;
+          box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.05);
+        }
+      </style>
 </head>
 <body>
-    
+    <center><H1>TIMEVAWE ZERO - COMING SOON TO A UNIVERSE NEAR YOU!</H1></center>
+
+  <script>
+  function updateClock() {
+    const clock = document.getElementById("clock");
+  
+    // Get the current time
+    const now = new Date();
+  
+    // Format the time as a string
+    const time = now.toLocaleTimeString();
+  
+    // Update the clock element
+    clock.textContent = time;
+  }
+  
+  // Update the clock every second
+  setInterval(updateClock, 1000);
+  </script>
 </body>
 </html>

@@ -10,16 +10,16 @@ app.get("/", (req, res) => {
 
 
 
-/* 
-const PORT = 8080;
+
+/* const PORT = 8080;
 app.listen(PORT, (error) =>  {
     if (error){
         console.log(error);
         return;
     }
     console.log("Server is running on ", PORT);
-});   
-*/
+});   */
+
 
 const PORT = 5000;
 app.listen(5000, () => {

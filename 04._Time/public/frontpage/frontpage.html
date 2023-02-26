@@ -38,6 +38,16 @@
           padding: 0.5em;
 
         }
+
+        p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+  color: crimson;
+}
+        #TZT  {
+          color: greenyellow;
+        }
       </style>
 </head>
 <body>
@@ -45,11 +55,32 @@
       <H1>TIMEVAWE ZERO - COMING SOON TO A UNIVERSE NEAR YOU!</H1>
       <h4>Terrence McKenna (November 16, 1946 – April 3, 2000)</h4>
     </center>
+
     <div id="clock"></div>
+    <script>
+      function updateClock() {
+        const clock = document.getElementById("clock");
+      
+        // Get the current time
+        const now = new Date();
+      
+        // Format the time as a string
+        const time = now.toLocaleTimeString();
+      
+        // Update the clock element
+        clock.textContent = time;
+      }
+      
+      // Update the clock every second
+      setInterval(updateClock, 1000);
+      </script>
+
+    <div id="navblocks">
     <section>
     <nav id="nav1"></nav>
     <nav id="nav2"></nav>
     </section>
+    </div>
 
     <div id="video">
       <center>
@@ -60,24 +91,50 @@
       </iframe>
     </center>
     </div>
-    <div><center><h1>To be continued..</h1></center>
-      </div>
-  <script>
-  function updateClock() {
-    const clock = document.getElementById("clock");
-  
-    // Get the current time
-    const now = new Date();
-  
-    // Format the time as a string
-    const time = now.toLocaleTimeString();
-  
-    // Update the clock element
-    clock.textContent = time;
+
+    <div id="countdown">
+      <center>
+        <h1>COUNTDOWN TO THE QUEENS BIRTHDAY</h1>
+      <p id="demo"></p>
+    </center>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Apr 16, 2023 00:01:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
   }
+}, 1000);
+</script>
+    </div>
+
+    <div>
+      <center><h1 id="TZT">TIMEWAVE ZERO THEORY</h1></center>
+      <embed src="frontpage/The_Mathematics_of_Timewave_Zero.pdf" width="100%" height="600px" type='application/pdf'> 
+    </div>
+
   
-  // Update the clock every second
-  setInterval(updateClock, 1000);
-  </script>
 </body>
 </html>

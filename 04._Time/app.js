@@ -10,6 +10,7 @@ app.get("/", (req, res) => {
 
 
 
+/* 
 const PORT = 8080;
 app.listen(PORT, (error) =>  {
     if (error){
@@ -17,4 +18,12 @@ app.listen(PORT, (error) =>  {
         return;
     }
     console.log("Server is running on ", PORT);
-});
+});   
+*/
+
+const PORT = 5000;
+app.listen(5000, () => {
+    console.log("Running on port 5000.");
+  });
+
+  module.exports = app;

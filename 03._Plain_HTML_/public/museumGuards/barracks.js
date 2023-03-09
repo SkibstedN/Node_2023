@@ -10,7 +10,10 @@ export function addGuard(guard) {
     return guards;
 }
 
-export default {
+
+// Export default guards
+
+/* export default {
     guard,
     addGuard
-};
+}; */

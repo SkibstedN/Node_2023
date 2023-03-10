@@ -41,6 +41,14 @@ app.put("/api/visitors", (req, res) =>{
     res.send({data: ++visitorCount} );
 });
 
+app.get("/api/guards", (req, res) => {
+    if (req.query.passport === "theskyisblue") {
+        res.redirect("/api/tanks");
+    }
+    res.send({ message: "You are not allowed to see the tanks. Give us the secret in the querystring with the key being passport"});
+    
+
+})
 
 // assignment Serve a page called museum guards
 app.get("/museumGuards", (req, res) =>  {

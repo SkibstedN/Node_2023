@@ -1,0 +1,17 @@
+#logo {
+    max-width: 5em;
+}
+
+body {
+    background-color: aquamarine;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+main {
+    /* min-height: calc(11 - 555)vh; */
+    /*min-height: 45vh;  */
+    flex: 1;
+} 

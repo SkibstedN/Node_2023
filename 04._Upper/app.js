@@ -5,15 +5,19 @@ import path from "path";
 
 app.use(express.static("public"));
 
-// import jokes from "./util/jokes.js";
+import jokes from "./util/jokes.js";
 
 
 app.get("/", (req, res) => {
     res.sendFile(path.resolve("public/pages/frontpage/frontpage.html"));
 });
 
-app.get("/IRLQuests", (req, res) => {
-    res.sendFile(path.resolve("public/pages/IRLQuests/IRLQuests.html"));
+app.get("/quests", (req, res) => {
+    res.sendFile(path.resolve("public/pages/quests/quests.html"));
+});
+
+app.get("/jokes", (req, res) => {
+    res.sendFile(path.resolve("public/pages/jokes/jokes.html"));
 });
 
 

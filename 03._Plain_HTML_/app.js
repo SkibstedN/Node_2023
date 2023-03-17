@@ -46,9 +46,16 @@ app.get("/api/guards", (req, res) => {
         res.redirect("/api/tanks");
     }
     res.send({ message: "You are not allowed to see the tanks. Give us the secret in the querystring with the key being passport"});
-    
-
 })
+
+    app.get("/proxy", (req, res) => {
+        fetch('https://www.google.com')
+        .then(response => response.text())
+        .then(result => console.log(result))
+        //res.send(<iframe src="https://www.google.com"></iframe>);
+    });
+
+
 
 // assignment Serve a page called museum guards
 app.get("/museumGuards", (req, res) =>  {

@@ -9,12 +9,13 @@ async function getJoke() {
     const jokeToAnalyze = result.joke || `${result.setup} ${result.delivery}`;
     const { score } = sentiment.analyze(jokeToAnalyze);
     if (score < 0) {
-       return await getJoke();
+        return await getJoke();
     } else {
-    return result;
+        return result;
     }
 }
 
 
 export default getJoke;
+
  

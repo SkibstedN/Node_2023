@@ -1,8 +1,6 @@
 import fs from "fs";
-import getJoke from "./jokes";
-import escape from "escape.html";
-// components
-// read the navbar and the footer here
+import getJoke from "./jokes.js";
+import escape from "escape-html";
 
 
 function renderPage(page, config={}) {
@@ -12,35 +10,40 @@ function renderPage(page, config={}) {
     const footer = fs.readFileSync("./public/pages/components/footer/footer.html").toString()
         .replace("$FOOTER_YEAR", `© ${new Date().getFullYear()}`);
 
-   // const page = fs.readFileSync(pagePath).toString();
     return navbar + page + footer;
-};
+}
 
 function readPage(pagePath) {
     return fs.readFileSync(pagePath).toString();
 }
 
-function renderJokePage(joke) {
+async function renderJokePage() {
     const path = "./public/pages/jokes/jokes.html";
     let jokePage = readPage(path);
     const joke = await getJoke();
-    if (joke.joke)  {
 
+    if (joke.joke)  {
+        jokePage = jokePage.replace("$JOKE_HTML_CONTENT", `<h3>${joke.joke}</h3>`);
     }else if (joke.setup && joke.delivery) {
         const jokeHtmlContent = `
-        <h3>${joke.setup}</h3>
-        <h4>...</h4>
-        <h3>`;
+            <h3>${escape(joke.setup)}</h3>
+            <h4>...</h4>
+            <h3>${escape(joke.delivery)}</h3>
+        `;
+        jokePage = jokePage.replace("$JOKE_HTML_CONTENT", jokeHtmlContent);
     }else {
-        jokePage = jokePage.replace("$JOKE_HTML_CONTENT", <h3>No jokes for you</h3>)
+        jokePage = jokePage.replace("$JOKE_HTML_CONTENT", "<h3>No jokes for you</h3>");
     }
 
-    const constructedPage = renderPage(jokePage, { 
-        tabTitle: "Upper"
-
-;    })
+    const constructedPage = renderPage(jokePage, {
+        tabTitle: "Upper | Jokes",
+        cssLink: `<link rel="stylesheet" href="/pages/jokes/jokes.css">`
+    });
+    return constructedPage;    
 }
 
 export default{
     renderPage,
-     readPage};
+    readPage,
+    renderJokePage
+    };

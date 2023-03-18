@@ -3,7 +3,6 @@
 }
 
 body {
-    background-color: rgb(67, 128, 108);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -11,7 +10,6 @@ body {
 
 
 main {
-    /* min-height: calc(11 - 555)vh; */
-    /*min-height: 45vh;  */
+    
     flex: 1;
 } 

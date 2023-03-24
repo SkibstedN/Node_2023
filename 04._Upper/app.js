@@ -31,7 +31,11 @@ app.get("/jokes", async (req, res) => {
     res.send(jokesPage);
 });
 
-const PORT = Number(process.env.PORT) || 8082;
+if (process.env.ENV === "DEV") {
+    // setup dev ....
+}
+
+const PORT = Number(process.env.PORT) || 8080;
 
 
 app.listen(PORT, (error) => {

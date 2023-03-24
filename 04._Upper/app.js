@@ -31,9 +31,9 @@ app.get("/jokes", async (req, res) => {
     res.send(jokesPage);
 });
 
+const PORT = Number(process.env.PORT) || 8082;
 
 
-const PORT = 8080;
 app.listen(PORT, (error) => {
     if (error) {
         console.log(error);

@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "express": "^4.18.2",
-    "moment-timezone": "^0.5.41"
+    "express-session": "^1.17.3"
   }
 }

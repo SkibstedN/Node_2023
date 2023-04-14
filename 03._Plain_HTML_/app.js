@@ -17,7 +17,8 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/frontpage/frontpage.html"); 
 });
 
-
+// task create three routers called tanksRouter.js, visitorsRouter.js, guardsRouter.js
+// task and move the routes below into those files
 
 app.get("/tanks", (req, res) => {
     res.sendFile(__dirname + "/public/tanks/tanks.html");

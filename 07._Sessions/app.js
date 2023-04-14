@@ -1,3 +1,7 @@
+import dotenv from "dotenv/config"
+
+console.log(process.env.TEST);
+
 import express from "express";
 const app = express();
 
@@ -12,7 +16,7 @@ app.use(cors({
 
 import session from "express-session";
 app.use(session({
-    secret: 'keyboard cat',
+    secret: 'SESSION_SECRET',
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }

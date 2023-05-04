@@ -1,0 +1,19 @@
+MySQL       vs.    MongoDB
+
+tables              collections
+row                 json 
+column              key
+cell                value
+
+
+
+show databases      show dbs
+create <database_name>  use <database_name>
+create table ...     db.createCollection("<collection_name>") 
+
+CRUD
+INSERT              insertOne, insertMany
+SELECT              find
+UPDATE              updateOne, updateMany    
+                    ex.: updateOne({ search criteria }, { $set: {update with } })
+DELETE              deleteOne, deleteMany

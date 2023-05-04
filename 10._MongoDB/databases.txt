@@ -1,0 +1,22 @@
+Relational databases
+=====================
+MySQL, Sqlite, Postgres, Mssql, Sql server, db2, oracle, mariadb, cassandra
+
+
+NoSQL databases
+================
+
+Document
+---------
+Mongodb
+Firestore
+
+
+Graph
+--------
+Neo4J 
+
+
+Key-value store
+------
+Redis

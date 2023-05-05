@@ -1,1 +1,2 @@
 Dette er en tekstfil
+Tekstfilen har nu to linier

@@ -10,16 +10,26 @@
         hello
     </h1>
 
-    <input type="color">
-    <button>Send the color</button>
+    <input id="color-picker" type="color">
+    <button onclick="sendColor()">Send the color</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
         const socket = io();
+        
+        const colorPicker = document.getElementById("color-picker");
 
-            // task: handle send the color to the server
 
-          // socket.emit("ready event", { data: "I am ready" });
+        function sendColor() {
+            
+            socket.emit("client chose a color", { data: colorPicker.value});
+        }
+
+        socket.on("a color was chosen", (data) => {
+            document.body.style.backgroundColor = data.data;
+        });
+
+            
     </script>
     
 </body>

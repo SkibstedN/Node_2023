@@ -11,9 +11,15 @@ const io = new Server(server);
 io.on("connection", (socket) => {
     console.log("A client connected", socket.id);
 
-    socket.on("ready event", (data) => {
-        console.log("From the ready event:", data.data);
+    socket.on("client chose a color", (data) => {
+
+        //Broadcasts to all clients in the io namespace
+        io.emit("a color was chosen", data);
+        // only emits to the socket itself
+        //socket.broadcast.emit("a color was chosen", data);
+        
     });
+    
 });
 
 const PORT = process.env.PORT || 8080;
